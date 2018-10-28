@@ -3,4 +3,4 @@ services:
     class: AdimeoDataSuite\Bundle\ProcessorsBundle\ProcessorFilter\ProcessorFilter
     public: true
     tags:
-      - { name: adimeodatasource.filters }
+      - { name: adimeodatasuite.filter }
