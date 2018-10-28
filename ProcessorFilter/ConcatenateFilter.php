@@ -16,7 +16,7 @@ class ConcatenateFilter extends ProcessorFilter
     return array('result');
   }
 
-  function getSettingsFields()
+  function getSettingFields()
   {
     return array(
       'separator' => array(
