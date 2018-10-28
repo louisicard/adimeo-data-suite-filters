@@ -16,6 +16,18 @@ class ConcatenateFilter extends ProcessorFilter
     return array('result');
   }
 
+  function getSettingsFields()
+  {
+    return array(
+      'separator' => array(
+        'label' => 'Separator',
+        'type' => 'string',
+        'trim' => 'false',
+        'required' => true
+      )
+    );
+  }
+
   function getArguments()
   {
     return array(
