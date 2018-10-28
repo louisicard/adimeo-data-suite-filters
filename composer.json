@@ -1,5 +1,5 @@
 {
-	"name": "adimeo-data-suite/processors",
+	"name": "adimeo-data-suite/filters",
   "type": "symfony-bundle",
   "autoload": {
     "psr-4": { "AdimeoDataSuite\\Bundle\\ProcessorsBundle\\": "" }
