@@ -1,0 +1,6 @@
+services:
+  adimeodatasource.filters.concatenatefilter:
+    class: AdimeoDataSuite\Bundle\ProcessorsBundle\ProcessorFilter\ProcessorFilter
+    public: true
+    tags:
+      - { name: adimeodatasource.filters }
