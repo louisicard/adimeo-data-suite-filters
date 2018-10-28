@@ -22,7 +22,7 @@ class ConcatenateFilter extends ProcessorFilter
       'separator' => array(
         'label' => 'Separator',
         'type' => 'string',
-        'trim' => 'false',
+        'trim' => false,
         'required' => true
       )
     );
