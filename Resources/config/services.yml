@@ -1,6 +1,6 @@
 services:
   adimeodatasource.filters.concatenatefilter:
-    class: AdimeoDataSuite\Bundle\ProcessorsBundle\ProcessorFilter\ProcessorFilter
+    class: AdimeoDataSuite\Bundle\ProcessorsBundle\ProcessorFilter\ConcatenateFilter
     public: true
     tags:
       - { name: adimeodatasuite.filter }
