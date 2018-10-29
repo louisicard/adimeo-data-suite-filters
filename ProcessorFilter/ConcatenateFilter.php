@@ -2,7 +2,7 @@
 
 namespace AdimeoDataSuite\ProcessorFilter;
 
-use AdimeoDataSuite\Bundle\CommonsBundle\Model\ProcessorFilter;
+use AdimeoDataSuite\Model\ProcessorFilter;
 
 class ConcatenateFilter extends ProcessorFilter
 {
