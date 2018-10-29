@@ -1,11 +1,9 @@
 {
 	"name": "adimeo-data-suite/filters",
-  "type": "symfony-bundle",
   "autoload": {
-    "psr-4": { "AdimeoDataSuite\\Bundle\\ProcessorsBundle\\": "" }
+    "psr-4": { "AdimeoDataSuite\\": "" }
   },
   "require": {
-    "symfony/framework-bundle": "*",
     "adimeo-data-suite/commons": "dev-master",
     "adimeo-data-suite/security": "dev-master"
   },

@@ -1,6 +1,6 @@
 <?php
 
-namespace AdimeoDataSuite\Bundle\ProcessorsBundle\ProcessorFilter;
+namespace AdimeoDataSuite\ProcessorFilter;
 
 use AdimeoDataSuite\Bundle\CommonsBundle\Model\ProcessorFilter;
 
