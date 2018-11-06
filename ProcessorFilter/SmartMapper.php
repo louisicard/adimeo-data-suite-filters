@@ -2,6 +2,7 @@
 
 namespace AdimeoDataSuite\ProcessorFilter;
 
+use AdimeoDataSuite\Model\Datasource;
 use AdimeoDataSuite\Model\ProcessorFilter;
 
 class SmartMapper extends ProcessorFilter {
@@ -30,7 +31,7 @@ class SmartMapper extends ProcessorFilter {
     return array('source_array' => 'Source array');
   }
 
-  public function execute(&$document) {
+  function execute(&$document, Datasource $datasource) {
     return array('smart_array' => $this->getArgumentValue('source_array', $document));
   }
 

@@ -3,6 +3,7 @@
 namespace AdimeoDataSuite\ProcessorFilter;
 
 
+use AdimeoDataSuite\Model\Datasource;
 use AdimeoDataSuite\Model\ProcessorFilter;
 
 class PHPFilter extends ProcessorFilter
@@ -37,7 +38,7 @@ class PHPFilter extends ProcessorFilter
     return eval($code);
   }
 
-  function execute(&$document)
+  function execute(&$document, Datasource $datasource)
   {
     $settings = $this->getSettings();
     $return = NULL;

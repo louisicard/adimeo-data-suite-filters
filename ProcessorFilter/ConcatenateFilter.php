@@ -2,6 +2,7 @@
 
 namespace AdimeoDataSuite\ProcessorFilter;
 
+use AdimeoDataSuite\Model\Datasource;
 use AdimeoDataSuite\Model\ProcessorFilter;
 
 class ConcatenateFilter extends ProcessorFilter
@@ -36,7 +37,7 @@ class ConcatenateFilter extends ProcessorFilter
     );
   }
 
-  function execute(&$document)
+  function execute(&$document, Datasource $datasource)
   {
     $field1 = $this->getArgumentValue('field_1', $document);
     $field2 = $this->getArgumentValue('field_2', $document);
