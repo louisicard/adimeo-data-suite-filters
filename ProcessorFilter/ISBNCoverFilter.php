@@ -19,13 +19,7 @@ class ISBNCoverFilter extends ProcessorFilter
 
   function getSettingFields()
   {
-    return array(
-      'value' => array(
-        'label' => 'Value',
-        'type' => 'string',
-        'required' => true
-      )
-    );
+    return array();
   }
 
   function getArguments()
