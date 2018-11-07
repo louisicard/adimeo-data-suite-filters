@@ -54,7 +54,7 @@ class MatchingListFilter extends ProcessorFilter {
         $data = array($input);
       $output = array();
       $matchingList = $datasource->getMatchingList($settings['matching_list_id']);
-      $list = json_decode(json_encode($matchingList->getList()), true);
+      $list = json_decode($matchingList->getList(), true);
       foreach ($data as $in) {
         $found = false;
         $out = '';
