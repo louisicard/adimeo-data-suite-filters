@@ -6,7 +6,8 @@
   "require": {
     "adimeo-data-suite/commons": "dev-master",
     "adimeo-data-suite/security": "dev-master",
-    "symfony/css-selector": "*"
+    "symfony/css-selector": "*",
+    "guzzlehttp/guzzle": "*"
   },
   "repositories": [
     {

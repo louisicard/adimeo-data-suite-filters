@@ -4,6 +4,7 @@ namespace AdimeoDataSuite\ProcessorFilter;
 
 use AdimeoDataSuite\Model\Datasource;
 use AdimeoDataSuite\Model\ProcessorFilter;
+use GuzzleHttp\Client;
 
 class GoogleGeocodingFilter extends ProcessorFilter
 {
@@ -47,7 +48,9 @@ class GoogleGeocodingFilter extends ProcessorFilter
         if (!empty($apiKey))
           $google_url .= '&key=' . $apiKey;
 
-        $json = $this->getUrlResponse($google_url);
+        $client = new Client();
+        $response = $client->request('GET', $google_url);
+        $json = json_decode($response->getBody(), TRUE);
         if(isset($json['error_message']) && !empty($json['error_message'])) {
           throw new \Exception('Google maps error : ' . $json['error_message']);
         }
@@ -62,16 +65,6 @@ class GoogleGeocodingFilter extends ProcessorFilter
       $datasource->getOutputManager()->writeLn('Exception ==> ' . $ex->getMessage());
       return array('value' => null);
     }
-  }
-
-  private function getUrlResponse($url)
-  {
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $r = curl_exec($ch);
-    curl_close($ch);
-    return json_decode($r, true);
   }
 
 }
