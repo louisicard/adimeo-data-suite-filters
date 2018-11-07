@@ -49,7 +49,7 @@ class ExistingDocumentFilter extends ProcessorFilter
         return array('doc' => $res['hits']['hits'][0]);
       }
     } catch (\Exception $ex) {
-      $datasource->getOutputManager()->writeLn($ex);
+      $datasource->getOutputManager()->writeLn('Exception ==> ' . $ex->getMessage());
     }
     return array('doc' => NULL);
   }

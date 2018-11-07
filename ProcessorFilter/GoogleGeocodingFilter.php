@@ -48,6 +48,9 @@ class GoogleGeocodingFilter extends ProcessorFilter
           $google_url .= '&key=' . $apiKey;
 
         $json = $this->getUrlResponse($google_url);
+        if(isset($json['error_message']) && !empty($json['error_message'])) {
+          throw new \Exception('Google maps error : ' . $json['error_message']);
+        }
         if (isset($json['status']) && $json['status'] == 'OK' && isset($json['results'][0])) {
           usleep(100000);//Sleep for 100ms
           return array('location' => $json['results'][0]);
@@ -56,7 +59,7 @@ class GoogleGeocodingFilter extends ProcessorFilter
       return array('value' => null);
 
     } catch (\Exception $ex) {
-      $datasource->getOutputManager()->writeLn($ex);
+      $datasource->getOutputManager()->writeLn('Exception ==> ' . $ex->getMessage());
       return array('value' => null);
     }
   }
