@@ -49,7 +49,10 @@ class DebugFilter extends ProcessorFilter
       foreach($fields as $field){
         if(isset($document[$field])){
           $datasource->getOutputManager()->writeLn('FIELD: ' . $field);
-          $datasource->getOutputManager()->dumpArray($document[$field]);
+          if(is_array($document[$field]))
+            $datasource->getOutputManager()->dumpArray($document[$field]);
+          else
+            $datasource->getOutputManager()->writeLn($document[$field]);
           $datasource->getOutputManager()->writeLn('');
           $datasource->getOutputManager()->writeLn('----------------------------------------------------');
         }
