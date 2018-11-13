@@ -53,6 +53,7 @@ class DeleteDocumentFilter extends ProcessorFilter
     } catch (\Exception $ex) {
       $datasource->getOutputManager()->writeLn('Exception ==> ' . $ex->getMessage());
     }
+    $document = [];
     return array('doc' => NULL);
   }
 
