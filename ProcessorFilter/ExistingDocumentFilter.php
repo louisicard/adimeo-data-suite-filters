@@ -32,21 +32,22 @@ class ExistingDocumentFilter extends ProcessorFilter
   function getArguments()
   {
     return array(
-      'doc_id' => 'Document ID',
+      'doc_id' => 'Document ID (can be an array)',
     );
   }
 
   function execute(&$document, Datasource $datasource)
   {
     try {
+      $docId = $this->getArgumentValue('doc_id', $document);
       $json = '{
           "query": {
-              "ids": {"values":["' . $this->getArgumentValue('doc_id', $document) . '"]}
+              "ids": {"values":["' . (is_array($docId) ? implode('", "', $docId) : $docId) . '"]}
           }
       }';
       $res = $datasource->getExecIndexManager()->search($this->getSettings()['index_name'], json_decode($json, TRUE));
       if(isset($res['hits']['hits'][0])){
-        return array('doc' => $res['hits']['hits'][0]);
+        return is_array($docId) ? array('doc' => $res['hits']['hits']) : array('doc' => $res['hits']['hits'][0]);
       }
     } catch (\Exception $ex) {
       $datasource->getOutputManager()->writeLn('Exception ==> ' . $ex->getMessage());
