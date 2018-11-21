@@ -32,7 +32,7 @@ class ExistingDocumentFilter extends ProcessorFilter
   function getArguments()
   {
     return array(
-      'doc_id' => 'Document ID (can be an array)',
+      'doc_id' => 'Document ID',
     );
   }
 
@@ -40,6 +40,8 @@ class ExistingDocumentFilter extends ProcessorFilter
   {
     try {
       $docId = $this->getArgumentValue('doc_id', $document);
+      if(empty($docId))
+        return array('doc' => null);
       $json = '{
           "query": {
               "ids": {"values":["' . (is_array($docId) ? implode('", "', $docId) : $docId) . '"]}
