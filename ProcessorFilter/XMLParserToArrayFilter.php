@@ -34,7 +34,12 @@ class XMLParserToArrayFilter extends ProcessorFilter
     try {
       $xml = simplexml_load_string($this->getArgumentValue('xml', $document));
 
-      $array = $this->serializeXml($xml);
+      if($xml) {
+        $array = $this->serializeXml($xml);
+      }
+      else {
+        return array('array' => array());
+      }
 
       return array('array' => $array);
     } catch (\Exception $ex) {
