@@ -69,17 +69,7 @@ class XPathGetterFilter extends ProcessorFilter
   }
 
   private function xmlToString(\SimpleXMLElement $elem) {
-    $string = $elem->asXML();
-    $openTag = '<' . $elem->getName() . '>';
-    $closeTag = '</' . $elem->getName() . '>';
-    if(strpos($string, $openTag) !== FALSE) {
-      $string = substr($string, strlen($openTag), strlen($string) - strlen($closeTag) - strlen($openTag));
-      if(!$string) $string = "";
-      return trim($string);
-    }
-    else {
-      return (string)$elem;
-    }
+    return (string)$elem;
   }
 
 }
