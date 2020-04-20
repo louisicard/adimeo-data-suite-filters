@@ -89,6 +89,9 @@ class PDOQueryFilter extends ProcessorFilter
           $sql = str_replace('@' . $k, $this->getArgumentValue($k, $document), $sql);
         }
         $rs = $pdo->query($sql);
+        if($rs === FALSE) {
+          $datasource->getOutputManager()->writeLn('!!! >>> An error has occured: ' . $pdo->errorInfo()[2]);
+        }
         while ($row = $rs->fetch(\PDO::FETCH_ASSOC)) {
           $rows[] = $row;
         }
