@@ -4,7 +4,7 @@
     "psr-4": { "AdimeoDataSuite\\": "" }
   },
   "require": {
-    "adimeo-data-suite/commons": "*",
+    "adimeo-data-suite/commons": "dev-master",
     "symfony/css-selector": "*",
     "guzzlehttp/guzzle": "*"
   }

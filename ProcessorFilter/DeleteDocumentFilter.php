@@ -44,12 +44,8 @@ class DeleteDocumentFilter extends ProcessorFilter
   function execute(&$document, Datasource $datasource)
   {
     try {
-      $datasource->getExecIndexManager()->getClient()->delete(array(
-        'index' => $this->getSettings()['index_name'],
-        'type' => $this->getSettings()['mapping_name'],
-        'id' => $this->getArgumentValue('doc_id', $document),
-      ));
-      $datasource->getExecIndexManager()->getClient()->indices()->flush();
+      $datasource->getExecIndexManager()->getServerClient()->delete($this->getSettings()['index_name'], $this->getArgumentValue('doc_id', $document), $datasource->getExecIndexManager()->isLegacy() ? $this->getSettings()['mapping_name'] : null);
+      $datasource->getExecIndexManager()->flush();
     } catch (\Exception $ex) {
       $datasource->getOutputManager()->writeLn('Exception ==> ' . $ex->getMessage());
     }
