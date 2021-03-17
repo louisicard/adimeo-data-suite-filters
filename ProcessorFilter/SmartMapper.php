@@ -6,7 +6,7 @@ use AdimeoDataSuite\Model\Datasource;
 use AdimeoDataSuite\Model\ProcessorFilter;
 
 class SmartMapper extends ProcessorFilter {
-  
+
   public function getDisplayName() {
     return "Smart mapper";
   }
@@ -21,8 +21,8 @@ class SmartMapper extends ProcessorFilter {
       )
     );
   }
-  
-  
+
+
   public function getFields() {
     return array('smart_array');
   }
@@ -32,7 +32,11 @@ class SmartMapper extends ProcessorFilter {
   }
 
   function execute(&$document, Datasource $datasource) {
-    return array('smart_array' => $this->getArgumentValue('source_array', $document));
+    $value = $this->getArgumentValue('source_array', $document);
+    if($value === '') {
+      $value = [];
+    }
+    return array('smart_array' => $value);
   }
 
 }
